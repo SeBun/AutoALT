@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension version="3.9" type="plugin" group="system" method="upgrade">
+    <name>PLG_SYSTEM_AUTOALT</name>
+    <version>1.0.0</version>
+    <creationDate>2025-04-22</creationDate>
+    <license>GPLv3</license>
+    <copyright>© 2025 Sergey Bunin</copyright>
+    <author>Sergey Bunin</author>
+    <authorEmail>sebun@mail.ru</authorEmail>
+    <authorUrl>https://sebun.ru/</authorUrl>
+    <description>PLG_SYSTEM_AUTOALT_XML_DESCRIPTION</description>
+
+    <files>
+        <filename plugin="autoalt">autoalt.php</filename>
+        <filename>index.html</filename>
+    </files>
+
+    <languages folder="language">
+        <language tag="ru-RU">ru-RU/ru-RU.plg_system_autoalt.ini</language>
+        <language tag="ru-RU">ru-RU/ru-RU.plg_system_autoalt.sys.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_system_autoalt.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_system_autoalt.sys.ini</language>
+    </languages>
+
+    <config>
+        <fields name="params" addfieldpath="/plugins/system/autoalt/fields">
+            <fieldset name="settings" label="Настройки">
+                <field name="editImages" type="list" default="1"
+                       label="Редактировать изображения"
+                       description="0 — нет, 1 — alt, 2 — alt и title">
+                    <option value="0">Нет</option>
+                    <option value="1">Только ALT</option>
+                    <option value="2">ALT + TITLE</option>
+                </field>
+                <field name="overwriteImages" type="list" default="0"
+                       label="Перезаписывать существующие alt/title"
+                       description="Если нет, существующие атрибуты сохраняются">
+                    <option value="0">Нет</option>
+                    <option value="1">Да</option>
+                </field>
+                <field name="addSize" type="list" default="1"
+                       label="Добавлять width/height"
+                       description="Если атрибутов нет — вычислить из файла">
+                    <option value="0">Нет</option>
+                    <option value="1">Да</option>
+                </field>
+                <field name="excludeEditor" type="list" default="1"
+                       label="Не работать в редакторе"
+                       description="Исключать админ-редактор">
+                    <option value="1">Да</option>
+                    <option value="0">Нет</option>
+                </field>
+                <field name="excludeUser" type="list" default="0"
+                       label="Не для авторизованных"
+                       description="Исключать зарегистрированных пользователей">
+                    <option value="0">Нет</option>
+                    <option value="1">Да</option>
+                </field>
+                <field name="excludeComponents" type="textarea" default=""
+                       label="Исключить компоненты"
+                       description="Список option (one per line) для которых не выполнять плагин" rows="6" cols="60"/>
+                <field name="excludeComponentsToggle" type="list" default="0"
+                       label="Инвертировать список компонентов"
+                       description="Если Да — выполнять только для перечисленных">
+                    <option value="0">Нет</option>
+                    <option value="1">Да</option>
+                </field>
+                <field name="exclude_masks" type="textarea" default=""
+                       label="Исключить по маскам src"
+                       description="Список подстрок из URL (<code>logo</code>, <code>sprite</code>) — по ним img-пропускаются" rows="6" cols="60"/>
+            </fieldset>
+        </fields>
+    </config>
+</extension>
